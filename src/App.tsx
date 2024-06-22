@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
+import {BrowserRouter as Router, Link, Route, Routes,} from "react-router-dom";
+import Other from "./Other";
 
 function App() {
 
@@ -16,10 +18,19 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                message from the backend from DB : {messages}
-            </header>
+            <Router>
+                <Routes>
+                    <Route path="/other" element={<Other/>}></Route>
+                </Routes>
+
+                <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo"/>
+                    message from the backend from DB : {messages}
+                    <Link to='/other'>
+                        <button>Other</button>
+                    </Link>
+                </header>
+            </Router>
         </div>
     );
 }
